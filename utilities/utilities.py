@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def nfolds(df, n_folds):
     '''To split the data into a given number of folds'''
@@ -18,7 +19,7 @@ def nfolds(df, n_folds):
     return folds
 
 
-def cross_validate(folds, model):
+def cross_validate(folds, model, hyperparams):
     '''To cross validate a model using a given set of folds'''
     results = []
 
@@ -28,7 +29,7 @@ def cross_validate(folds, model):
         train_df = pd.concat(train_folds)
         # Use the i-th fold as the validation set
         val_df = folds[i].copy()
-        metrics = model(train_df, val_df)
+        metrics = model(train_df, val_df, hyperparams)
         results.append(metrics)
 
     avg_results = []
@@ -48,6 +49,8 @@ def metrics(y, y_pred):
     '''Find the accuracy, sensitivity, specificity, precision and f1 score for the model'''
     total = len(y)
     # Find the number of correct predictions and the accuracy
+    y, y_pred = np.array(y), np.array(y_pred)
+
     correct = (y == y_pred).sum()
     accuracy = correct / total
 
