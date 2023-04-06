@@ -12,9 +12,9 @@ y = df['default']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # hyper param grid
-param_grid = {'n_neighbors': [3, 5, 7, 9, 11],
+param_grid = {'n_neighbors': [3, 5, 7, 9, 11, 13, 15, 17, 19, 21],
               'weights': ['uniform', 'distance'],
-              'metric': ['euclidean', 'manhattan']}
+              'metric': ['euclidean', 'manhattan', 'cosine']}
 
 # create class
 knn = KNeighborsClassifier()
@@ -38,3 +38,4 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
 
 results = pd.DataFrame(grid.cv_results_)
+results.to_csv('knn_sklearn.csv')
