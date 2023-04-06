@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 
 def nfolds(df, n_folds):
     '''To split the data into a given number of folds'''
@@ -50,7 +51,7 @@ def metrics(y, y_pred):
     total = len(y)
     # Find the number of correct predictions and the accuracy
     y, y_pred = np.array(y), np.array(y_pred)
-
+    print(y, y_pred)
     correct = (y == y_pred).sum()
     accuracy = correct / total
 
