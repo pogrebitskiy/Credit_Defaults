@@ -9,7 +9,7 @@ df = pd.read_csv('balanced_credit.csv')
 X = df.drop('default', axis=1)
 y = df['default']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
 
 # hyper param grid
 param_grid = {'n_neighbors': [3, 5, 7, 9, 11, 13, 15, 17, 19, 21],
