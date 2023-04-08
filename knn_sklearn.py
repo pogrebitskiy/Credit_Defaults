@@ -2,11 +2,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import scale
 
 df = pd.read_csv('balanced_credit.csv')
 
+
 # features and target
-X = df.drop('default', axis=1)
+X = scale(df.iloc[:, :-1].values, with_mean=True, with_std=True)
 y = df['default']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
