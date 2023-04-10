@@ -8,6 +8,8 @@
 
 - **Preprocessed Data:** `balanced_credit.csv`
 
+
+#### Machine Learning Methods
 - **K-Nearest Neighbors:** `knn.ipynb`, `knn.py`, `knn_sklearn.py`, `knn_comparison.ipynb`
 - **Logistic Regression:** `logistic_regression.ipynb`
 - **Decision Tree:** `decision_tree.py`, `decision_tree.ipynb`
